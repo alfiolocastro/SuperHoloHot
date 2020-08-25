@@ -1,0 +1,116 @@
+Fantom Music Library
+
+Song list
+
+[Seamless Loop]
+･Algorhythm_Loop.ogg            324KB   ALGORHYTHM(Loop)
+･Be_Up_In_Arms_Loop.ogg         722KB   Be Up In Arms(Loop)
+･Blader_Loop.ogg                552KB   Blader(Loop)
+･Connexion_Loop.ogg             299KB   Connexion(Loop)
+･Cool_Elegance_Loop.ogg         351KB   Cool Elegance(Loop)
+･Crazy_Break_Down_Loop.ogg      521KB   Crazy Break Down(Loop)
+･Devils_Core_Loop.ogg           456KB   Devil's Core(Loop)
+･DotaBata-Run_Loop.ogg          110KB   DotaBata-Run(Loop)
+･Fire_Dragoon_Loop.ogg          437KB   Fire Dragoon(Loop)
+･HIJIKATA_TRANCE_Loop.ogg       519KB   HIJIKATA TRANCE++(Loop)
+･Mission_Loop.ogg              1107KB   Mission(Loop)
+･Nightmare_Loop.ogg             379KB   Nightmare(Loop)
+･One_of_Victory_Loop.ogg        234KB   One of Victory(Loop)
+･Power_of_Bravery_Loop.ogg      251KB   Power of Bravery(Loop)
+･Prison_of_Mind_Loop.ogg        202KB   Prison of Mind(Loop)
+･Suspicious_Heart_Loop.ogg      674KB   Suspicious Heart(Loop)
+･Voltage_Loop.ogg               507KB   Voltage(Loop)
+･Xross_Road_Xrisis_Loop.ogg     494KB   Xross Road Xrisis(Loop)
+･Zero-Dimensional_Loop.ogg      466KB   Zero-Dimensional(Loop)
+
+[Short Music(Repeat)]
+･Beautiful_Dreamer.mp3         1077KB   Beautiful Dreamer
+･Beautiful_Dreamer-LT.mp3       861KB   Beautiful Dreamer
+･Cloudy_Shadow.ogg             1214KB   Cloudy Shadow
+･Constant_Battle.mp3           2027KB   Constant Battle
+･Darksider.mp3                 4627KB   Darksider
+･Darksider-LT.mp3              3696KB   Darksider
+･Death_Spiral.ogg              1076KB   Death Spiral
+･Death_Spiral-LT.mp3            983KB   Death Spiral
+･Disast'n'Groove.ogg           3016KB   Disast'n'Groove
+･Disast'n'Groove-LT.ogg        2436KB   Disast'n'Groove
+･Face_The_Force.mp3            2451KB   Face The Force
+･Mysterious_Zone.ogg           1484KB   Mysterious Zone
+･Mysterious_Zone-LT.mp3        1379KB   Mysterious Zone
+･Nightmare.ogg                 1246KB   Nightmare
+･Nightmare-LT.mp3              1123KB   Nightmare
+･Pressure.ogg                  2143KB   Pressure
+･Pressure-LT.mp3               1756KB   Pressure
+･Ready_To_Flight.mp3            967KB   Ready To Flight
+･Super_Dragon.mp3              3684KB   Super Dragon
+･Xross_Road_Xrisis.ogg         1112KB   Xross Road Xrisis
+･Xross_Road_Xrisis-LT.ogg       905KB   Xross Road Xrisis
+･Xross_Road_Xrisis_Long.ogg    1596KB   Xross Road Xrisis
+･Xross_Road_Xrisis_Long-LT.ogg 1279KB   Xross Road Xrisis
+･Zrk.mp3                       2078KB   Zrk
+
+(*)'_Loop' is seamless looping.
+(*)'_Long' is more repeat times.
+(*)'-LT' is light weight version. To reduce the file size, the bit-rate is lowered.
+
+(※)'_Loop' はシームレスループ版です。
+(※)'_Long' はリピート回数が多いバージョンです。
+(※)'-LT' は軽量版です。ファイルサイズを減らすためにビットレートを落としてあります。
+
+------------------------------------------------
+Category (Approximately)
+
+[Title/Setting/etc]
+･ALGORHYTHM
+･Be Up In Arms
+･Connexion
+･Ready To Flight
+･Disast'n'Groove
+･HIJIKATA TRANCE++
+
+[Battle/Boss]
+･Blader
+･Devil's Core
+･Fire Dragoon
+･Crazy Break Down
+･Mission
+･Zrk
+･Super Dragon
+･Xross Road Xrisis
+･Constant Battle
+･Face The Force
+･Voltage
+
+[Stage Clear/Congratulation]
+･Power of Bravery
+･One of Victory
+･Beautiful Dreamer
+
+[Game Over/Dead]
+･Death Spiral
+
+[Darkness/Dungeon]
+･Cloudy Shadow
+･Mysterious Zone
+･Prison of Mind
+･Suspicious Heart
+･Pressure
+･Darksider
+･Nightmare
+･Zero-Dimensional
+
+[Relax/Calm]
+･Cool Elegance
+
+[Comedy/Active]
+･DotaBata-Run
+
+------------------------------------------------
+All Composed & Arranged By Fantom
+
+[Blog] http://fantom1x.blog130.fc2.com/
+[Twitter] https://twitter.com/fantom_1x
+[Picotune] http://picotune.me/?@Fantom
+[Monappy] https://monappy.jp/u/Fantom
+[Applied to Unity Tutorial STG Sample]
+http://www43.tok2.com/home/fantom1x/unity/shooting2/
