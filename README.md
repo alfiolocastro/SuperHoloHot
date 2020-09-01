@@ -4,3 +4,7 @@ In the last  few days I've put my hands on a Hololens2. I loved SuperHOT (pc, co
 I think Hololens is a perfect fit for this purpouse (hands free, a decent GPU, a very good spatial perception and understanding) and this video https://youtu.be/1pQrcX15480 shows what I got after a day of [spare time] development using Unity3d and MRTK.
 
 The idea is to make a "complete" game with level editor and fully playable in every context (room, open spaces)
+
+_________________________________________________________________________________________________________________
+
+[![Watch the video](https://img.youtube.com/vi/1pQrcX15480/hqdefault.jpg)](https://youtu.be/1pQrcX15480)
