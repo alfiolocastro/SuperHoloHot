@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.Utilities;
+
+using Microsoft.MixedReality.Toolkit.UI;
+
 [RequireComponent(typeof(Rigidbody))]
 [SelectionBase]
 public class WeaponScript : MonoBehaviour
@@ -21,54 +26,139 @@ public class WeaponScript : MonoBehaviour
     public float reloadTime = .3f;
     public int bulletAmount = 6;
 
+    AudioSource clip;
 
-    void Start()
+    bool isPlayerWeapon;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         renderer = GetComponent<Renderer>();
 
-        ChangeSettings();
+        clip = GetComponent<AudioSource>();
     }
+
+    void Start()
+    {
+        if (bulletAmount == -1)
+            bulletAmount = 256;
+        else
+            if (bulletAmount >1)
+            bulletAmount = Random.Range(1, bulletAmount);
+
+
+       
+
+        //ChangeSettings();
+    }
+
+    public void AssingToPlayer()
+    {
+        if (SuperHotScript.instance != null)
+        {
+            SuperHotScript.instance.GetWeapon(this.gameObject);
+            //Equip(true);
+            isPlayerWeapon = true;
+        }
+    }
+
+    public void Equip(bool inUse)
+    {
+
+        if (rb != null)
+        {
+            rb.isKinematic = inUse;
+            rb.useGravity = !inUse;
+        }
+            //rb.interpolation = RigidbodyInterpolation.Interpolate;
+            if (collider != null)
+                collider.isTrigger = inUse;
+
+        
+        if (inUse)
+        if (SuperHotScript.weapon == this)
+        {
+            collider.isTrigger = false;
+        }
+
+        if (!inUse)
+            isPlayerWeapon = false;
+
+    }
+
+    public void Grab()
+    {
+        collider.isTrigger = false;
+        //rb.isKinematic = true;
+    }
+
 
     void ChangeSettings()
     {
         if (transform.parent != null)
             return;
 
-        rb.isKinematic = (SuperHotScript.instance.weapon == this) ? true : false;
-        rb.interpolation = (SuperHotScript.instance.weapon == this) ? RigidbodyInterpolation.None : RigidbodyInterpolation.Interpolate;
-        collider.isTrigger = (SuperHotScript.instance.weapon == this);
+        rb.isKinematic = (SuperHotScript.instance.weaponscript == this) ? true : false;
+       // rb.interpolation = (SuperHotScript.instance.weaponscript == this) ? RigidbodyInterpolation.None : RigidbodyInterpolation.Interpolate;
+        collider.isTrigger = (SuperHotScript.instance.weaponscript == this);
     }
 
-    public void Shoot(Vector3 pos,Quaternion rot, bool isEnemy)
+    private void Update()
     {
+        if (clip != null)
+        clip.pitch = Time.timeScale;
+    }
+
+    public bool Shoot(Vector3 pos,Quaternion rot, bool isEnemy)
+    {
+
+        if (!active)
+            return true;
+
+        if (clip != null)
+        clip.pitch = Time.timeScale;
+
         if (reloading)
-            return;
+            return true;
 
         if (bulletAmount <= 0)
-            return;
+            return false;
 
-        if(!SuperHotScript.instance.weapon == this)
+        if (SuperHotScript.instance == null)
+            return true;
+
+        if (!SuperHotScript.instance.gameObject.activeInHierarchy)
+            return true;
+
+        if (!SuperHotScript.instance.weaponscript == this)
             bulletAmount--;
 
         GameObject bullet = Instantiate(SuperHotScript.instance.bulletPrefab, pos, rot);
 
+        clip.Play();
+
         if (GetComponentInChildren<ParticleSystem>() != null)
             GetComponentInChildren<ParticleSystem>().Play();
 
-        if(SuperHotScript.instance.weapon == this)
+        if(SuperHotScript.instance.weaponscript == this)
             StartCoroutine(Reload());
 
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.2f, .01f, 10, 90, false, true).SetUpdate(true);
 
-        if(SuperHotScript.instance.weapon == this)
-            transform.DOLocalMoveZ(-.1f, .05f).OnComplete(()=>transform.DOLocalMoveZ(0,.2f));
+        //if(SuperHotScript.instance.weaponscript == this)
+        //    transform.DOLocalMoveZ(-.1f, .05f).OnComplete(()=>transform.DOLocalMoveZ(0,.2f));
+
+        return true;
+
     }
 
     public void Throw()
     {
+        if (!active)
+            return;
+
         Sequence s = DOTween.Sequence();
         s.Append(transform.DOMove(transform.position - transform.forward, .01f)).SetUpdate(true);
         s.AppendCallback(() => transform.parent = null);
@@ -83,10 +173,11 @@ public class WeaponScript : MonoBehaviour
         if (!active)
             return;
 
-        SuperHotScript.instance.weapon = this;
-        ChangeSettings();
+        SuperHotScript.instance.weaponscript = this;
+        isPlayerWeapon = true;
+        //ChangeSettings();
 
-        transform.parent = SuperHotScript.instance.weaponHolder;
+        transform.parent = SuperHotScript.weapon;
 
         transform.DOLocalMove(Vector3.zero, .25f).SetEase(Ease.OutBack).SetUpdate(true);
         transform.DOLocalRotate(Vector3.zero, .25f).SetUpdate(true);
@@ -103,11 +194,13 @@ public class WeaponScript : MonoBehaviour
         rb.AddForce((Camera.main.transform.position - transform.position) * 2, ForceMode.Impulse);
         rb.AddForce(Vector3.up * 2, ForceMode.Impulse);
 
+        isPlayerWeapon = false;
+
     } 
 
     IEnumerator Reload()
     {
-        if (SuperHotScript.instance.weapon != this)
+        if (SuperHotScript.instance.weaponscript != this)
             yield break;
         SuperHotScript.instance.ReloadUI(reloadTime);
         reloading = true;
@@ -130,5 +223,16 @@ public class WeaponScript : MonoBehaviour
         }
 
     }
+
+    public Vector3 movementVelocity;
+
+    public void PollWeaponPhysics(ManipulationEventData evt)
+    {
+        if (SuperHotScript.instance != null && SuperHotScript.instance.weaponscript == this)
+        {
+            movementVelocity = evt.PointerVelocity;
+        }
+    }
+
 
 }
